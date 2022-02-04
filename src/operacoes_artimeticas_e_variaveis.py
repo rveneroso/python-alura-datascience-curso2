@@ -44,3 +44,50 @@ Carro_2 = ['Passat', 'Motor Diesel', 1991, 5712.0, False, ['Central multimídia'
 Carros = [Carro_1, Carro_2]
 print('Travas elétricas' in Carros[0][5]) # Retorna True
 print(Carros[0][-2][-1]) # Imprime Piloto automático
+
+# Exemplo de list comprehensions em Python
+[i ** 2 for i in range(10)] # O resultado será a lista [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Para criar uma lista a partir de um set (para remover duplicatas) gerado com base em uma lista
+# contendo listas:
+dados = [
+    ['Rodas de liga', 'Travas elétricas', 'Piloto automático', 'Bancos de couro', 'Ar condicionado', 'Sensor de estacionamento', 'Sensor crepuscular', 'Sensor de chuva'],
+    ['Central multimídia', 'Teto panorâmico', 'Freios ABS', '4 X 4', 'Painel digital', 'Piloto automático', 'Bancos de couro', 'Câmera de estacionamento'],
+    ['Piloto automático', 'Controle de estabilidade', 'Sensor crepuscular', 'Freios ABS', 'Câmbio automático', 'Bancos de couro', 'Central multimídia', 'Vidros elétricos']
+]
+resultado = list(set([item for lista in dados for item in lista]))
+print(resultado)
+
+# Lembre-se que o operador de soma (+), quando aplicado em duas listas, retorna a concatenação
+# destas listas. Portanto, o código
+result_2 = []
+for lista in dados:
+    result_2 += lista
+print(result_2)
+'''
+resulta em 
+
+[
+    'Rodas de liga', 'Travas elétricas', 'Piloto automático', 'Bancos de couro', 'Ar condicionado', 
+    'Sensor de estacionamento', 'Sensor crepuscular', 'Sensor de chuva', 'Central multimídia', 
+    'Teto panorâmico', 'Freios ABS', '4 X 4', 'Painel digital', 'Piloto automático', 'Bancos de couro', 
+    'Câmera de estacionamento', 'Piloto automático', 'Controle de estabilidade', 'Sensor crepuscular', 
+    'Freios ABS', 'Câmbio automático', 'Bancos de couro', 'Central multimídia', 'Vidros elétricos'
+]
+'''
+
+dados = [
+    ['Jetta Variant', 2003, False],
+    ['Passat', 1991, False],
+    ['Crossfox', 1990, False],
+    ['DS5', 2019, True],
+    ['Aston Martin DB4', 2006, False],
+    ['Palio Weekend', 2012, False],
+    ['A5', 2019, True],
+    ['Série 3 Cabrio', 2009, False],
+    ['Dodge Jorney', 2019, False],
+    ['Carens', 2011, False]
+]
+# Teste == omitido já que lista[2] já retorna um boolean
+veiculos_zerokm = [lista for lista in dados if lista[2]]
+print(f'Veículos 0 KM: {veiculos_zerokm}')
